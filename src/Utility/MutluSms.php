@@ -85,6 +85,8 @@ class MutluSms
 			$xml_data .= $message;
 		}
 		$xml_data .='</smspack>';
+
+		return $xml_data;
 	}
 
 	private function apiCall($xml_data)
