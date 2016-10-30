@@ -1,5 +1,5 @@
 {
-    "name": "suhaboncukcu/MutluSms",
+    "name": "suhaboncukcu/mutlu-sms",
     "description": "MutluSms plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
