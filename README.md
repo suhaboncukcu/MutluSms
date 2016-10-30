@@ -15,7 +15,7 @@ composer require suhaboncukcu/mutlu-sms:dev-master
 
 bin/cake load plugin MutluSms
 
-bin/cake bake migrations migrate -p MutluSms
+bin/cake migrations migrate -p MutluSms
 ```
 
 
