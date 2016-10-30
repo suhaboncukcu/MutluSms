@@ -23,13 +23,13 @@ class MutluSms
 		$this->_config = $config;
 	}
 
-	public function new(array $data)
+	public function create(array $data)
 	{
-		$MutluMuessages = TableRegistry::get('MutluMuessages');
-		$mutluMessage = $MutluMuessages->newEntity();
-		$MutluMuessages->patchEntity($mutluMessage, $data);
+		$MutluMessages = TableRegistry::get('MutluSms.MutluMessages');
+		$mutluMessage = $MutluMessages->newEntity();
+		$MutluMessages->patchEntity($mutluMessage, $data);
 
-		if($MutluMessage->save($mutluMessage)) {
+		if($MutluMessages->save($mutluMessage)) {
 			return $mutluMessage->id;
 		} else {
 			return false;
@@ -38,7 +38,7 @@ class MutluSms
 
 	public function send($messageId='')
 	{
-		$MutluMuessages = TableRegistry::get('MutluMuessages');
+		$MutluMessages = TableRegistry::get('MutluSms.MutluMessages');
 		$mutluMessage = $MutluMessages->get($messageId);
 
 		$message = $this->createMessage($mutluMessage);
@@ -46,13 +46,13 @@ class MutluSms
 		$this->apiCall($xml_data);
 
 		$mutluMessage->sent = true;
-		$MutluMessage->save($mutluMessage);
+		$MutluMessages->save($mutluMessage);
 
 	}
 
 	public function sendAll()
 	{
-		$MutluMuessages = TableRegistry::get('MutluMuessages');
+		$MutluMessages = TableRegistry::get('MutluSms.MutluMessages');
 		$mutluMessages = $MutluMessages->find('all')->where(['sent' => false]);
 
 		$messagesToSend = array();
@@ -62,7 +62,7 @@ class MutluSms
 		$xml_data = $this->createXml($messagesToSend);
 		$this->apiCall($xml_data);
 
-		$mutluMessages->setSentAll();
+		$MutluMessages->setSentAll();
 
 	}
 

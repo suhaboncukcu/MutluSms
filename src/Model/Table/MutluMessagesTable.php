@@ -69,11 +69,6 @@ class MutluMessagesTable extends Table
             ->requirePresence('message', 'create')
             ->notEmpty('message');
 
-        $validator
-            ->boolean('sent')
-            ->requirePresence('sent', 'create')
-            ->notEmpty('sent');
-
         return $validator;
     }
 }
