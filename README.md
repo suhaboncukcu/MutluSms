@@ -33,14 +33,14 @@ $mutluSmsHandler = new MutluSms([
 					]);
 
 // METHOD 1
-$mutluMessageId = $mutluSmsHandler->new(['message' => 'yourmessage', 'number' => 'targetnumber']);
+$mutluMessageId = $mutluSmsHandler->create(['message' => 'yourmessage', 'number' => 'targetnumber']);
 $mutluSmsHandler->send($mutluMessageId);
 
 // METHOD 2
 
-$mutluSmsHandler->new(['message' => 'yourmessage1', 'number' => 'targetnumber1']);
-$mutluSmsHandler->new(['message' => 'yourmessage2', 'number' => 'targetnumber2']);
-$mutluSmsHandler->new(['message' => 'yourmessage3', 'number' => 'targetnumber3']);
+$mutluSmsHandler->create(['message' => 'yourmessage1', 'number' => 'targetnumber1']);
+$mutluSmsHandler->create(['message' => 'yourmessage2', 'number' => 'targetnumber2']);
+$mutluSmsHandler->create(['message' => 'yourmessage3', 'number' => 'targetnumber3']);
 $mutluSmsHandler->sendAll();
 
 
