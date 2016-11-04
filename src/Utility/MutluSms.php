@@ -43,11 +43,14 @@ class MutluSms
 
 		$message = $this->createMessage($mutluMessage);
 		$xml_data = $this->createXml([$message]);
-		$this->apiCall($xml_data);
+		$answer = $this->apiCall($xml_data);
+
+
 
 		$mutluMessage->sent = true;
 		$MutluMessages->save($mutluMessage);
 
+		return $answer;
 	}
 
 	public function sendAll()
@@ -103,5 +106,7 @@ class MutluSms
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$output = curl_exec($ch);
 		curl_close($ch);
+
+		return $output;
 	}
 }
